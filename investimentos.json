@@ -1,0 +1,239 @@
+{
+  "intents": [
+    {
+      "tag": "introducao_investimentos",
+      "patterns": [
+        "Explique sobre investimentos",
+        "Quais são as opções de investimento?",
+        "Como investir dinheiro?",
+        "Dicas de investimento no Brasil"
+      ],
+      "responses": [
+        "Investir envolve alocar dinheiro em diferentes ativos com a expectativa de obter um retorno.",
+        "Existem várias opções de investimento no Brasil, como Tesouro Direto, ações, CDB, entre outros.",
+        "Ao investir, é importante considerar seus objetivos financeiros, tolerância ao risco e horizonte de investimento."
+      ],
+      "context": [""]
+    },
+    {
+      "tag": "tesouro_direto",
+      "patterns": [
+        "O que é Tesouro Direto?",
+        "Como investir no Tesouro Direto?",
+        "Explique sobre títulos públicos",
+        "Vale a pena investir no Tesouro Direto?"
+      ],
+      "responses": [
+        "O Tesouro Direto é um programa do governo brasileiro que permite a compra de títulos públicos pela internet.",
+        "Existem diferentes tipos de títulos no Tesouro Direto, como Tesouro Selic, Tesouro IPCA, e Tesouro Prefixado.",
+        "Investir no Tesouro Direto pode ser uma opção segura e acessível para diversos perfis de investidores."
+      ],
+      "context": [""]
+    },
+    {
+      "tag": "selic",
+      "patterns": [
+        "O que é a Taxa Selic?",
+        "Como a Taxa Selic impacta meus investimentos?",
+        "Selic hoje",
+        "Explique sobre a taxa básica de juros no Brasil"
+      ],
+      "responses": [
+        "A Taxa Selic é a taxa básica de juros da economia brasileira. Ela é determinada pelo Banco Central.",
+        "A variação na Taxa Selic pode influenciar a rentabilidade de investimentos, como renda fixa e alguns fundos.",
+        "Acompanhar a Selic é importante para entender o cenário econômico e tomar decisões de investimento informadas."
+      ],
+      "context": [""]
+    },
+    {
+      "tag": "cdi",
+      "patterns": [
+        "O que é CDI?",
+        "Como o CDI funciona?",
+        "CDI hoje",
+        "Diferença entre CDI e Selic"
+      ],
+      "responses": [
+        "O CDI (Certificado de Depósito Interbancário) é uma taxa de juros referencial para operações entre bancos.",
+        "Muitos investimentos de renda fixa no Brasil têm sua rentabilidade atrelada ao CDI.",
+        "Entender o CDI é essencial para avaliar a rentabilidade de diversos produtos financeiros."
+      ],
+      "context": [""]
+    },
+    {
+      "tag": "previdencia privada",
+      "patterns": [
+        "O que é CDI?",
+        "Como o CDI funciona?",
+        "CDI hoje",
+        "Diferença entre CDI e Selic"
+      ],
+      "responses": [
+        "O CDI (Certificado de Depósito Interbancário) é uma taxa de juros referencial para operações entre bancos.",
+        "Muitos investimentos de renda fixa no Brasil têm sua rentabilidade atrelada ao CDI.",
+        "Entender o CDI é essencial para avaliar a rentabilidade de diversos produtos financeiros."
+      ],
+      "context": [""]
+    },
+    {
+      "intents": [
+        {
+          "tag": "previdencia_privada",
+          "patterns": [
+            "O que é previdência privada?",
+            "Como funciona a previdência privada?",
+            "Vantagens da previdência privada",
+            "Previdência privada no Brasil"
+          ],
+          "responses": [
+            "A previdência privada é um tipo de investimento de longo prazo voltado para a aposentadoria.",
+            "Ela envolve contribuições regulares para formar uma reserva que será utilizada no futuro, proporcionando uma renda complementar.",
+            "A previdência privada no Brasil oferece opções como PGBL e VGBL, cada um com características específicas."
+          ],
+          "context": [""]
+        },
+        {
+          "tag": "pgbl",
+          "patterns": [
+            "O que é PGBL?",
+            "Como funciona o PGBL?",
+            "Vantagens e desvantagens do PGBL",
+            "Diferença entre PGBL e VGBL"
+          ],
+          "responses": [
+            "O PGBL (Plano Gerador de Benefício Livre) é um tipo de previdência privada que permite dedução fiscal de até 12% da renda tributável anual.",
+            "Ele é indicado para pessoas que fazem a declaração completa do Imposto de Renda.",
+            "Ao investir no PGBL, é possível adiar o pagamento de impostos, pois a tributação incide sobre o montante total resgatado no futuro."
+          ],
+          "context": [""]
+        },
+        {
+          "tag": "vgbl",
+          "patterns": [
+            "O que é VGBL?",
+            "Como funciona o VGBL?",
+            "Vantagens e desvantagens do VGBL",
+            "Diferença entre VGBL e PGBL"
+          ],
+          "responses": [
+            "O VGBL (Vida Gerador de Benefício Livre) é outro tipo de previdência privada que não oferece dedução fiscal nas contribuições.",
+            "Ele é indicado para quem utiliza o modelo simplificado na declaração do Imposto de Renda ou para quem já atingiu o limite de dedução com o PGBL.",
+            "A tributação incide apenas sobre os rendimentos no momento do resgate."
+          ],
+          "context": [""]
+        },{
+          "intents": [
+            {
+              "tag": "renda_variavel",
+              "patterns": [
+                "O que é renda variável?",
+                "Como funciona a renda variável?",
+                "Exemplos de investimentos em renda variável",
+                "Riscos da renda variável"
+              ],
+              "responses": [
+                "Renda variável é um tipo de investimento em que os retornos não são preestabelecidos, variando de acordo com as condições do mercado.",
+                "Diferentemente da renda fixa, os investimentos em renda variável, como ações, não garantem rentabilidades específicas.",
+                "Ações, fundos de investimento e mercado de câmbio são exemplos de investimentos em renda variável."
+              ],
+              "context": [""]
+            },
+            {
+              "tag": "acoes",
+              "patterns": [
+                "O que são ações?",
+                "Como investir em ações?",
+                "Riscos e benefícios de investir em ações",
+                "Empresas na bolsa de valores"
+              ],
+              "responses": [
+                "Ações representam partes do capital social de uma empresa e são negociadas na bolsa de valores.",
+                "Investir em ações envolve comprar e vender esses papéis, buscando lucro através da valorização das ações ou recebendo dividendos.",
+                "Os riscos incluem a volatilidade do mercado, mas as ações também oferecem potencial de retorno significativo."
+              ],
+              "context": [""]
+            }            
+          ]
+        },
+        {
+          "intents": [
+            {
+              "tag": "tesouro_direto",
+              "patterns": [
+                "O que é o Tesouro Direto?",
+                "Como investir no Tesouro Direto?",
+                "Tipos de títulos no Tesouro Direto",
+                "Riscos e benefícios do Tesouro Direto"
+              ],
+              "responses": [
+                "O Tesouro Direto é um programa do governo brasileiro que permite investir em títulos públicos.",
+                "Para investir, você pode escolher entre diferentes tipos de títulos, como Tesouro Selic, Tesouro IPCA, e Tesouro Prefixado.",
+                "Os riscos no Tesouro Direto são considerados baixos em comparação com outros investimentos, e os benefícios incluem a segurança e a facilidade de investir."
+              ],
+              "context": [""]
+            },
+            {
+              "tag": "tesouro_selic",
+              "patterns": [
+                "O que é o Tesouro Selic?",
+                "Vantagens do Tesouro Selic",
+                "Rentabilidade do Tesouro Selic"
+              ],
+              "responses": [
+                "O Tesouro Selic é um título público pós-fixado atrelado à taxa básica de juros da economia (Selic).",
+                "Uma das vantagens do Tesouro Selic é a liquidez diária, o que significa que você pode resgatar seu dinheiro a qualquer momento.",
+                "A rentabilidade do Tesouro Selic varia conforme a taxa Selic, sendo uma opção interessante para quem busca segurança e liquidez."
+              ],
+              "context": [""]
+            }
+           
+          ]
+        },
+        {
+          "intents": [
+            {
+              "tag": "acessar_bacen",
+              "patterns": [
+                "Como acessar o site do Banco Central do Brasil?",
+                "Site do Bacen",
+                "Bacen"
+              ],
+              "responses": [
+                "Você pode acessar o site do Banco Central do Brasil <a href='https://www.bcb.gov.br/' target='_blank'>aqui</a>."
+              ],
+              "context": [""]
+            },
+            {
+              "tag": "acessar_b3",
+              "patterns": [
+                "Como acessar o site da B3?",
+                "Site da B3",
+                "B3"
+              ],
+              "responses": [
+                "Você pode acessar o site da B3 <a href='http://www.b3.com.br/' target='_blank'>aqui</a>."
+              ],
+              "context": [""]
+            },
+            {
+              "tag": "acessar_susep",
+              "patterns": [
+                "Como acessar o site da Susep?",
+                "Site da Susep",
+                "Susep"
+              ],
+              "responses": [
+                "Você pode acessar o site da Superintendência de Seguros Privados (Susep) <a href='http://www.susep.gov.br/' target='_blank'>aqui</a>."
+              ],
+              "context": [""]
+            }
+            
+          ]
+        }
+
+       
+      ]
+    }
+    
+  ]
+}

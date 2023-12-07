@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Chatbot</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <style>
+    :root {
+      --body-bg: #f0f0f0;
+      --msger-bg: #fff;
+      --border: 1px solid #ddd;
+      --left-msg-bg: #ece5dd;
+      --right-msg-bg: #dcf8c6;
+    }
+    
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      background-color: var(--body-bg);
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    .msger {
+      max-width: 375px;
+      border: none;
+      border-radius: 12px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .msger-header {
+      padding: 16px;
+      text-align: center;
+      border-bottom: var(--border);
+      background: #075e54;
+      color: #fff;
+      border-top-left-radius: 12px; /* Borda superior esquerda arredondada */
+      border-top-right-radius: 12px; /* Borda superior direita arredondada */
+    }
+    
+    .msger-chat {
+      flex: 1;
+      overflow-y: auto;
+      max-height: 600px; /* Tamanho máximo inicial do corpo do chat */
+      height: 600px; /* Altura inicial do corpo do chat */
+      padding: 10px;
+      background: #fff;
+      transition: max-height 0.3s; /* Adição de uma transição suave */
+    }
+
+    .msger-chat.expanded {
+      max-height: none; /* Remover a restrição máxima quando expandido */
+      transition: max-height 0.5s; /* Adição de uma transição suave */
+    }
+    
+    .msg {
+      display: flex;
+      margin-bottom: 10px;
+    }
+    
+    .msg-bubble {
+      max-width: 70%;
+      padding: 10px;
+      border-radius: 12px;
+      font-size: 12px;
+    }
+    
+    .msg-info-name {
+      font-weight: bold;
+      color: #075e54;
+      font-size: 13px;
+    }
+    
+    .msger-inputarea {
+      padding: 11px;
+      border-top: var(--border);
+      background: #f0f0f0;
+      display: flex;
+    }
+    
+    .msger-input {
+      flex: 1;
+      background: #fff;
+      border: none;
+      border-radius: 5px;
+    }
+    
+    .msger-send-btn {
+      margin-left: 10px;
+      background: #2F4F4F;
+      color: #fff;
+      font-weight: bold;
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      cursor: pointer;
+      transition: background 0.23s;
+    }
+    
+    .left-msg .msg-bubble {
+      background: var(--left-msg-bg);
+      margin-right: auto;
+    }
+    
+    .right-msg .msg-bubble {
+      background: var(--right-msg-bg);
+      margin-left: auto;
+    }
+    
+    .msger-send-btn:hover {
+      background: #FFD700;
+    }
+    
+    .msg-info-time {
+      color: #999;
+      font-size: 10px;
+    }
+  </style>
+  <script src='https://use.fontawesome.com/releases/v5.0.13/js/all.js'></script>
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+</head>
+<body>
+  <!-- partial:index.partial.html -->
+  <section class="msger">
+    <header class="msger-header">
+      <div class="msger-header-title">
+        <img src="https://i.ibb.co/hB65PPz/robot-2.png" alt="Imagem do Chatbot" style="width: 64px; height: 64px; margin-right: 5px;">
+      </div>
+    </header>
+    <main class="msger-chat">
+      <div class="msg left-msg">
+        <div class="msg-img" style="background-image: url(https://image.flaticon.com/icons/svg/327/327779.svg)"></div>
+        <div class="msg-bubble">
+          <div class="msg-info">
+            <div class="msg-info-name">InvestBot</div>
+            <div class="msg-info-time">12:45</div>
+          </div>
+          <div class="msg-text">
+            Olá, sou um robô e estou aqui para te ajudar, com dúvidas sobre Investimentos. 😄
+          </div>
+        </div>
+      </div>
+    </main>
+    <form class="msger-inputarea">
+      <input type="text" class="msger-input" id="textInput" placeholder="O que você está buscando?">
+      <button type="submit" class="msger-send-btn">Enviar</button>
+    </form>
+  </section>
+  <!-- partial -->
+  <script>
+    const msgerForm = get(".msger-inputarea");
+    const msgerInput = get(".msger-input");
+    const msgerChat = get(".msger-chat");
+    // Icons made by Freepik from www.flaticon.com
+    const BOT_IMG = "https://i.ibb.co/NjQqZN6/robot.png";
+    const PERSON_IMG = "https://i.ibb.co/18W21hj/user.png";
+    const BOT_NAME = "    ChatBot";
+    const PERSON_NAME = "Você";
+    msgerForm.addEventListener("submit", event => {
+      event.preventDefault();
+      const msgText = msgerInput.value;
+      if (!msgText) return;
+      appendMessage(PERSON_NAME, PERSON_IMG, "right", msgText);
+      msgerInput.value = "";
+      botResponse(msgText);
+    });
+    function appendMessage(name, img, side, text) {
+      //   Simple solution for small apps
+      const msgHTML = `
+        <div class="msg ${side}-msg">
+          <div class="msg-img" style="background-image: url(${img})"></div>
+          <div class="msg-bubble">
+            <div class="msg-info">
+              <div class="msg-info-name">${name}</div>
+              <div class="msg-info-time">${formatDate(new Date())}</div>
+            </div>
+            <div class="msg-text">${text}</div>
+          </div>
+        </div>
+      `;
+      msgerChat.insertAdjacentHTML("beforeend", msgHTML);
+      msgerChat.scrollTop += 500;
+    }
+    function botResponse(rawText) {
+      // Bot Response
+      $.get("/get", { msg: rawText }).done(function (data) {
+        console.log(rawText);
+        console.log(data);
+        const msgText = data;
+        appendMessage(BOT_NAME, BOT_IMG, "left", msgText);
+      });
+    }
+    // Utils
+    function get(selector, root = document) {
+      return root.querySelector(selector);
+    }
+    function formatDate(date) {
+      const h = "0" + date.getHours();
+      const m = "0" + date.getMinutes();
+      return `${h.slice(-2)}:${m.slice(-2)}`;
+    }
+  </script>
+</body>
+</html>
